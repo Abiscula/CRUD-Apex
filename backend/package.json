@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  },
+  "name": "api-nodejs",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
