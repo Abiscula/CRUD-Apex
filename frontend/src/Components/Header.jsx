@@ -4,10 +4,11 @@ import { Container } from "../styles/styled-Header"
 export const Header = () => {
     return(
         <Container>
-            <span>
-                <p>Home</p>
-                <p>Cadastrar</p>
-            </span>
+            <nav>
+                <span>Home</span>
+                <span>Notícias</span>
+                <span>Cadastro</span>
+            </nav>
             <Login/>
         </Container>
     )

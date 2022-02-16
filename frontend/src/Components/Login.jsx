@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form } from '../styles/styled-Form'
+import { Form } from '../styles/styled-Login'
 import axios from 'axios'
 
 export const Login = () => {
@@ -20,7 +20,7 @@ export const Login = () => {
     return(
         <Form>
             <div>
-                <span>
+                <section>
                     <label>Login</label>
                     <input 
                         type="text"
@@ -29,9 +29,9 @@ export const Login = () => {
                         onChange={(event) => setLogin(event.target.value)}
                         
                     />
-                </span>
+                </section>
 
-                <span>
+                <section>
                     <label>Senha</label>
                     <input 
                         type="password"
@@ -42,7 +42,7 @@ export const Login = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                     <p>{`${password.length}/8`}</p> 
-                </span>
+                </section>
 
                 <button onClick={handleLogin}>Conectar</button>
             </div>
