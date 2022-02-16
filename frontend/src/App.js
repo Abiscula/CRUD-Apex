@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Login } from "./Components/Login";
+import { Home } from "./views/Home";
 import { GlobalStyle } from './styles/GlobalStyle'
 
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <Login />
+      <Home />
     </Fragment>
   );
 }
