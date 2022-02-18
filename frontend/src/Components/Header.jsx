@@ -6,7 +6,6 @@ export const Header = () => {
         <Container>
             <nav>
                 <span>Home</span>
-                <span>Notícias</span>
                 <span>Cadastro</span>
             </nav>
             <Login/>
