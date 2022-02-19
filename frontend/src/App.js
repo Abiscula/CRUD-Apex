@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { Home } from "./views/Home"
-import { GlobalStyle } from './assets/styles/GlobalStyle'
+import { MyRoutes } from "./routes";
 import { Header } from "./Components/Header";
+import { GlobalStyle } from './assets/styles/GlobalStyle'
 import { Container } from "./assets/styles/styled-App"
 
 
@@ -12,7 +12,7 @@ function App() {
       <Header />
       
       <Container>
-        <Home />
+        <MyRoutes />
       </Container>
     </Fragment>
   );
