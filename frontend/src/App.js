@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { MyRoutes } from "./routes";
 import { Header } from "./Components/Header";
 import { GlobalStyle } from './assets/styles/GlobalStyle'
 import { Container } from "./assets/styles/styled-App"
 
-
 function App() {
+
   return (
     <Fragment>
       <GlobalStyle />

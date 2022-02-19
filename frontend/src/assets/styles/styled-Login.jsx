@@ -10,7 +10,7 @@ export const Form = styled.form`
         align-items: center;
         justify-content: center;
         margin-top: 90%;
-        background-color: #853639b2;
+        background: #853639b2;
         border-radius: 12px;
         height: 12rem;
         width: 16rem;
