@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { getPlayerStats } from "../apis/ApexAPI"
-import { Container } from "../styles/styled-ApexPlayer"
+import { Container } from "../assets/styles/styled-ApexPlayer"
 
 export const ApexPlayer = () => {
 
@@ -37,7 +37,7 @@ export const ApexPlayer = () => {
                     </select>
                 </span>
 
-                <button onClick={() => ApexPlayerStats(player, plataform)}>Buscar Jogador</button>
+                <button onClick={() => ApexPlayerStats(player, plataform)}>Buscar</button>
             </section>
 
             <section className="render">

@@ -1,13 +1,13 @@
 import { Fragment } from "react"
-import { Header } from "../Components/Header"
 import { ApexPlayer } from "../Components/ApexPlayer"
+import { Container } from "../assets/styles/styled-Home"
 
 export const Home = () => {
 
     return(
-        <Fragment>
-            <Header />
+        <Container>
+            
             <ApexPlayer />
-        </Fragment>
+        </Container>
     )
 }

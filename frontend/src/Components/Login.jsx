@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form } from '../styles/styled-Login'
+import { Form } from '../assets/styles/styled-Login'
 import axios from 'axios'
 
 export const Login = () => {

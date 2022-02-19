@@ -1,5 +1,5 @@
 import { Login } from "./Login"
-import { Container } from "../styles/styled-Header"
+import { Container } from "../assets/styles/styled-Header"
 
 export const Header = () => {
     return(

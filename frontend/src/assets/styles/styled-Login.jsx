@@ -10,8 +10,7 @@ export const Form = styled.form`
         align-items: center;
         justify-content: center;
         margin-top: 90%;
-        background-color: #99a3dbd8;
-        border: 1px solid gray;
+        background-color: #853639b2;
         border-radius: 12px;
         height: 12rem;
         width: 16rem;
@@ -26,12 +25,14 @@ export const Form = styled.form`
     label {
         display: flex;
         align-self: center;
+        color: #fefefe;
     }
 
     input {
         width: 10rem;
         height: 1.6rem;
         border-radius: 8px;
+        background-color: #e9e3e3;
     }
 
     p    {

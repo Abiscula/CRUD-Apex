@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import img from '../img/header.jpg'
 
 export const Container = styled.header`
     display: flex;
     height: 30vh;
-    background-color: #6b72b1;
+    background-image: url(${img});
     justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
     nav {
         display: flex;
-        justify-content: space-around;
+        gap: 5rem;
         width: 45%;
         margin-top: 1%;
         margin-right: 4%;
@@ -18,7 +20,7 @@ export const Container = styled.header`
         color: #fefefe;
         height: 10%;
         padding: 2px;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         cursor: pointer;
         padding: 5px;
     }
