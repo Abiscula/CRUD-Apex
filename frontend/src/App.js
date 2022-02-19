@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { Home } from "./views/Home";
+import { Home } from "./views/Home"
 import { GlobalStyle } from './assets/styles/GlobalStyle'
 import { Header } from "./Components/Header";
+import { Container } from "./assets/styles/styled-App"
 
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
     <Fragment>
       <GlobalStyle />
       <Header />
-      <Home />
+      
+      <Container>
+        <Home />
+      </Container>
     </Fragment>
   );
 }
