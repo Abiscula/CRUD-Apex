@@ -10,14 +10,14 @@ export const Form = styled.form`
         align-items: center;
         justify-content: center;
         margin-top: 90%;
-        background: #853639b2;
+        background: ${props => props.loginVisible === true ? '#853639b2' : 'none'};
         border-radius: 12px;
         height: 12rem;
         width: 16rem;
     }
 
     section {
-        display: flex;
+        display: ${props => props.loginVisible === true ? 'flex' : 'none'};
         gap: 8px;
         margin-bottom: 3%;
     }
@@ -45,7 +45,7 @@ export const Form = styled.form`
     }
 
     button {
-        display: flex;
+        display: ${props => props.loginVisible === true ? 'flex' : 'none'};
         align-self: flex-end;
         padding: 8px;
         margin-right: 10%;

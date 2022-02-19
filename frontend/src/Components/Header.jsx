@@ -8,7 +8,7 @@ export const Header = () => {
 
     const navigate = useNavigate();
     const location = useLocation()
-    const { setLoginVisible } = useCustomStatess()
+    const { setLoginVisible } = useCustomStates()
 
     useEffect(() => {
         if (location.pathname === '/') {

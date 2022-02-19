@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Form } from '../assets/styles/styled-Login'
 import axios from 'axios'
+import { useCustomStates } from '../Provider/States'
 
 export const Login = () => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
+    const { loginVisible } = useCustomStates()
 
     async function handleLogin(event) {
         event.preventDefault()
@@ -18,7 +20,7 @@ export const Login = () => {
     }
     
     return(
-        <Form>
+        <Form loginVisible={loginVisible}>
             <div>
                 <section>
                     <label>Login</label>
