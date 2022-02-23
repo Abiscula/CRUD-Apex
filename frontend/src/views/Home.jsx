@@ -16,7 +16,6 @@ export const Home = () => {
         }
 
         const data = await getPlayerStats(player, plataform)
-        console.log(data)
         setStats(data)
     }
 

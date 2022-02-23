@@ -3,14 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 3%;
+    align-items: flex-start;
+    margin-top: 4.5%;
     
     .busca {
         display: flex;
         justify-content: center;
         gap: 1rem;
         font-size: 1.2rem;
+        margin-left: 10%;
+        margin-bottom: 5%;
        
         span {
             display: flex;
@@ -54,23 +56,30 @@ export const Container = styled.div`
     }
 
     .banner {
-        width: 50%;
+        width: 90%;
         border-radius: 12px;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     }
 
 
     .render {
+    background-color: #3d2424a9;
+    color: #d1d1d1;
+    padding-bottom: 5%;
+    border-radius: 15px;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-left: 10%;
+    align-items: center;
+    align-self: flex-end;
+    margin-right: 2%;
     font-size: 1.2rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
         form {
         display: flex;
         justify-content: space-between;
-        width: 49%;
+        width: 88%;
         align-items: center;
         margin-top: 5%;
 
