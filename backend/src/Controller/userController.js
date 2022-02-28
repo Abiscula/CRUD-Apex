@@ -12,7 +12,7 @@ class userController {
         const { user, passw } = req.body
         db.where({user: user})
             .where({passw: passw})
-            .table("new_table").then(data => {
+            .table("users").then(data => {
                 if(data.length > 0) {
                     res.send('Logado com sucesso!')
                 } else {
@@ -31,12 +31,12 @@ class userController {
             nick: nick
         }
 
-        db.insert(values).into("new_table").then(data => {
-            console.log(data)
-            res.send(data)
+        db.insert(values).into("users").then(data => {
+            res.send("Usuário cadastrado com sucesso!")
         }).catch(err => {
-            console.log(err)
-            res.send(err)
+            if(err.code == "ER_DUP_ENTRY") {
+                res.send('ERRO: Usuário já cadastrado')
+            }
         })
     }
 }

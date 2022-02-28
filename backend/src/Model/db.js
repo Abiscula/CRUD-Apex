@@ -1,4 +1,4 @@
-require('dotenv/config')
+require('dotenv').config()
 
 const knex = require('knex')({
     client: 'mysql2',
