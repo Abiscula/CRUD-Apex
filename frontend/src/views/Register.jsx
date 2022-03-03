@@ -1,28 +1,58 @@
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { Container } from "../assets/styles/styled-Register"
 
 export const Register = () => {
 
+    const navigate = useNavigate();
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
     const [nick, setNick] = useState('')
+
+
 
     async function handleRegister(event) {
         event.preventDefault()
         const url = 'http://localhost:3001/register'
         const data = {
+            'name': name,
+            'email': email,
             'user': user,
             'passw': password,
             'nick': nick
         }
 
         const resp = await axios.post(url, data)
-        alert(resp.data)
+        if(resp.data != "Usuário cadastrado com sucesso!") {
+            alert(resp.data)
+            return
+        } else {
+            navigate('/')
+            alert(resp.data)
+        }
+        
     }
 
     return(
-        <section>
+        <Container>
             <form>
+                <div>
+                    <label>Nome</label>
+                    <input type="text" required minLength={4}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <label>E-mail</label>
+                    <input type="email" required minLength={4}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+
                 <div>
                     <label>Usuário</label>
                     <input type="text" required minLength={4}
@@ -46,6 +76,6 @@ export const Register = () => {
                 
                 <button onClick={handleRegister}>Cadastrar</button>
             </form>
-        </section>
+        </Container>
     )
 }
