@@ -8,7 +8,6 @@ export const Home = () => {
     const [plataform, setPlataform] = useState('PC')
     const [stats, setStats] = useState({})
 
-
     async function ApexPlayerStats(player, plataform) {
         if (player === '') {
             alert('Digite o nome do jogador')
@@ -39,7 +38,7 @@ export const Home = () => {
                 <button onClick={() => ApexPlayerStats(player, plataform)}>Buscar</button>
             </section>
 
-            <section className="render">
+            <section className={Object.keys(stats).length === 0 ? "empty" : "render"}>
                 <form>
                     <span>
                         <h3>Nome: {stats&&stats.global?.name}</h3>
