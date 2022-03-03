@@ -24,8 +24,10 @@ class userController {
     }
 
     register(req, res) {
-        const { user, passw, nick } = req.body
+        const { name, email, user, passw, nick } = req.body
         let values = {
+            name: name,
+            email: email,
             user: user,
             passw: passw,
             nick: nick
