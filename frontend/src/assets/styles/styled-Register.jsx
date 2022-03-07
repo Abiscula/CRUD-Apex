@@ -15,7 +15,7 @@ export const Container = styled.section`
         background-color: #3d2424a9;
         border-radius: 14px;
         width: 700px;
-        height: 700px;
+        height: 750px;
 
         div {
             display: flex;

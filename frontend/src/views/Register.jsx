@@ -10,12 +10,17 @@ export const Register = () => {
     const [email, setEmail] = useState('')
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
+    const [password2, setPassword2] = useState('')
     const [nick, setNick] = useState('')
 
 
 
     async function handleRegister(event) {
         event.preventDefault()
+        if(password != password2) {
+            alert("As senhas devem ser iguais")
+            return;
+        }
         const url = 'http://localhost:3001/register'
         const data = {
             'name': name,
@@ -64,6 +69,13 @@ export const Register = () => {
                     <label>Senha</label>
                     <input type="password" required minLength={8}
                         onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <label>Repita a senha</label>
+                    <input type="password" required minLength={8}
+                        onChange={(e) => setPassword2(e.target.value)}
                     />
                 </div>
 
