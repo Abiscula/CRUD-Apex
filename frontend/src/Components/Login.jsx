@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Form } from '../assets/styles/styled-Login'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { Form } from '../assets/styles/styled-Login'
 import { useCustomStates } from '../Provider/States'
 
 export const Login = () => {
+    const navigate = useNavigate();
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const { loginVisible } = useCustomStates()
@@ -16,7 +18,13 @@ export const Login = () => {
             'passw': password
         }
         const res = await axios.post(url, data)
-        alert(res.data)
+        if(res.data !== "Logado com sucesso!") {
+            alert(res.data)
+            return
+        } else {
+            navigate('/user')
+            alert(res.data)
+        }
     }
     
     return(

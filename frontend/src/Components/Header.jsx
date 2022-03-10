@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useCustomStates } from "../Provider/States";
 import { Login } from "./Login";
 import { Container } from "../assets/styles/styled-Header";
+import {ReactComponent as UserIcon} from '../assets/img/user_icon.svg';
 
 export const Header = () => {
 
@@ -20,11 +21,21 @@ export const Header = () => {
 
     return(
         <Container>
-            <nav>
-                <span onClick={() => navigate('/')}>Home</span>
-                <span onClick={() => navigate('/register')}>Cadastro</span>
-            </nav>
-            <Login/>
+            <div>
+                <nav>
+                    <span onClick={() => navigate('/')}>Home</span>
+                    <span onClick={() => navigate('/register')}>Cadastro</span>
+                </nav>
+                {location.pathname !== '/user' 
+                
+                ?   <Login/> 
+                
+                :   <section>
+                        <UserIcon />
+                        <a onClick={() => navigate('/')}>Logout</a>
+                    </section>
+                }
+            </div>
         </Container>
     )
 }

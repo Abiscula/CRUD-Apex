@@ -8,11 +8,19 @@ export const Container = styled.header`
     justify-content: space-around;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
+    div {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 1%;
+        padding: 5px;
+    }
+
+
     nav {
         display: flex;
         gap: 5rem;
         width: 45%;
-        margin-top: 1%;
         margin-right: 4%;
     }
 
@@ -22,7 +30,6 @@ export const Container = styled.header`
         padding: 2px;
         font-size: 1.6rem;
         cursor: pointer;
-        padding: 5px;
     }
 
     span:hover {
@@ -30,4 +37,15 @@ export const Container = styled.header`
         background-color: gray;
         border-radius: 10px;
     }
+
+    section {
+
+        a {
+            font-size: 1.6rem;
+            color: #fefefe;
+            cursor: pointer;
+            margin-left: 40px;
+        }
+    }
+
 `
