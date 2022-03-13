@@ -7,13 +7,13 @@ export const Form = styled.form`
     div {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: center ;
+        justify-content: center !important;
         margin-top: 70%;
         background: ${props => props.loginVisible === true ? '#853639b2' : 'none'};
         border-radius: 12px;
         height: 12rem;
-        width: 16rem;
+        width: 16rem !important;
     }
 
     section {

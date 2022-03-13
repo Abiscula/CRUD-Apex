@@ -12,40 +12,47 @@ export const Container = styled.header`
         display: flex;
         justify-content: space-around;
         width: 100%;
-        margin-top: 1%;
         padding: 5px;
-    }
 
+        nav {
+            display: flex;
+            gap: 5rem;
+            width: 45%;
+            margin-right: 4%;
+            margin-top: 1%;
+        }
 
-    nav {
-        display: flex;
-        gap: 5rem;
-        width: 45%;
-        margin-right: 4%;
-    }
-
-    span {
-        color: #fefefe;
-        height: 10%;
-        padding: 2px;
-        font-size: 1.6rem;
-        cursor: pointer;
-    }
-
-    span:hover {
-        text-decoration: underline;
-        background-color: gray;
-        border-radius: 10px;
-    }
-
-    section {
-
-        a {
-            font-size: 1.6rem;
+        span {
             color: #fefefe;
+            height: 10%;
+            padding: 2px;
+            font-size: 1.6rem;
             cursor: pointer;
-            margin-left: 40px;
+        }
+
+        span:hover {
+            text-decoration: underline;
+            background-color: gray;
+            border-radius: 10px;
+        }
+
+        section {
+            display: flex;
+            margin-top: 1%;
+
+            svg {
+                cursor: pointer;
+            }
+
+            a {
+                font-size: 1.6rem;
+                color: #fefefe;
+                cursor: pointer;
+                margin-left: 40px;
+            }
         }
     }
+
+
 
 `

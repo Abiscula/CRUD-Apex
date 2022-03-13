@@ -9,30 +9,35 @@ export const Header = () => {
 
     const navigate = useNavigate();
     const location = useLocation()
-    const { setLoginVisible } = useCustomStates()
+    const { setLoginVisible, loginVisible, setLogged, logged } = useCustomStates()
 
     useEffect(() => {
-        if (location.pathname === '/') {
+        if (!logged) {
             setLoginVisible(true)
         } else {
             setLoginVisible(false)
         }
     }, [navigate])
 
+    function logout() {
+        setLogged(false)
+        navigate('/')
+    }
+
     return(
-        <Container>
+        <Container loginVisible={loginVisible}>
             <div>
                 <nav>
                     <span onClick={() => navigate('/')}>Home</span>
-                    <span onClick={() => navigate('/register')}>Cadastro</span>
+                    {!logged ? <span onClick={() => navigate('/register')}>Cadastro</span> : ''}
                 </nav>
-                {location.pathname !== '/user' 
+                {!logged
                 
                 ?   <Login/> 
                 
                 :   <section>
-                        <UserIcon />
-                        <a onClick={() => navigate('/')}>Logout</a>
+                        <UserIcon onClick={() => navigate('/user')}/>
+                        <a onClick={logout}>Logout</a>
                     </section>
                 }
             </div>

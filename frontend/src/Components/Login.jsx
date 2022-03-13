@@ -8,7 +8,7 @@ export const Login = () => {
     const navigate = useNavigate();
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const { loginVisible } = useCustomStates()
+    const { loginVisible, setLogged } = useCustomStates()
 
     async function handleLogin(event) {
         event.preventDefault()
@@ -22,8 +22,8 @@ export const Login = () => {
             alert(res.data)
             return
         } else {
-            navigate('/user')
             alert(res.data)
+            setLogged(true)
         }
     }
     

@@ -1,9 +1,55 @@
-
+import { Container } from "../assets/styles/styled-UserArea"
 
 export const UserArea = () => {
     return (
         <div>
-            <h2>OLA</h2>
+            <Container>
+                <form>
+                    <div>
+                        <label>Nome</label>
+                        <input type="text" minLength={4}
+                            
+                        />
+                    </div>
+
+                    <div>
+                        <label>E-mail</label>
+                        <input type="email" minLength={4}
+                            
+                        />
+                    </div>
+
+                    <div>
+                        <label>Usuário</label>
+                        <input type="text" minLength={4}
+                            
+                        />
+                    </div>
+
+                    <div>
+                        <label>Senha</label>
+                        <input type="password" minLength={8}
+                            
+                        />
+                    </div>
+
+                    <div>
+                        <label>Repita a senha</label>
+                        <input type="password" minLength={8}
+                            
+                        />
+                    </div>
+
+                    <div>
+                        <label>Nick (Apex)</label>
+                        <input type="text" minLength={4}
+                            
+                        />
+                    </div>
+                    
+                    <button>Alterar dados</button>
+                </form>
+            </Container>
         </div>
     )
 }
