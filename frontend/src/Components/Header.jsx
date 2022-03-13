@@ -21,6 +21,7 @@ export const Header = () => {
 
     function logout() {
         setLogged(false)
+        setLoginVisible(true)
         navigate('/')
     }
 

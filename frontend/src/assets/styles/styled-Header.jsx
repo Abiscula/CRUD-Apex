@@ -45,6 +45,7 @@ export const Container = styled.header`
             }
 
             a {
+                height: 2rem;
                 font-size: 1.6rem;
                 color: #fefefe;
                 cursor: pointer;
