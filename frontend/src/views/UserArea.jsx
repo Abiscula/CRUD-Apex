@@ -1,4 +1,5 @@
 import { Container } from "../assets/styles/styled-UserArea"
+import  img  from '../assets/img/caustic-mini.png'
 
 export const UserArea = () => {
     return (
@@ -47,7 +48,11 @@ export const UserArea = () => {
                         />
                     </div>
                     
-                    <button>Alterar dados</button>
+                    <span>
+                        <button>Alterar dados</button>
+                        <img src={img}></img>
+                    </span>
+                    
                 </form>
             </Container>
         </div>

@@ -15,7 +15,7 @@ export const Container = styled.section`
         background-color: #493131a9;
         border-radius: 14px;
         width: 700px;
-        height: 750px;
+        height: 780px;
 
         div {
             display: flex;
@@ -39,20 +39,33 @@ export const Container = styled.section`
             }
         }
 
-        button {
-            margin-top: 8%;
-            padding: 0.7rem;
-            border-radius: 10px;
-            border-color: #312c2b;
-            width: 25%;
-            font-size: 1.06rem;
-            color: #312c2b;
-            background: #c49231;
-            cursor: pointer;
-        }
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 2%;
 
-        button:hover {
-            transform: scale(1.1);
+            button {
+                padding: 0.7rem;
+                border-radius: 10px;
+                border-color: #312c2b;
+                width: 25%;
+                font-size: 1.06rem;
+                color: #312c2b;
+                background: #c49231;
+                cursor: pointer;
+            }
+
+            button:hover {
+                transform: scale(1.1);
+                color: #fefefe;
+            }
+
+            img {
+                width: 20%;
+                transform: scaleX(-1);
+            }
         }
 
     }
