@@ -1,4 +1,18 @@
-# CRUD-NodeJS
+# CRUD-NodeJS (Em desenvolvimento)
+
+Site criado em ReactJS com a temática do jogo ApexLegends.
+
+Na página inicial é possível consultar estatisticas básicas do jogador (via API) informando o nick e escolhendo a plataforma do mesmo.
+
+No momento está sendo desenvolvido as rotas e páginas para implementação do CRUD. 
+
+Posteriomente ao se conectar o usuário será direcionado para um dashboard que irá trazer dados e estatisticas sobre as últimas partidas jogadas (através do nick informado durante o cadastro).
+
+Front-end = React JS
+Back-end =  Node.js
+Banco = MySQL
+
+
 
 ## Home
 ![image](https://user-images.githubusercontent.com/85578784/158075364-80d57e05-9192-4306-9ebe-bc1ad49b6f51.png)
