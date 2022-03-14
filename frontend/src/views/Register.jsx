@@ -30,13 +30,15 @@ export const Register = () => {
             'nick': nick
         }
 
-        const resp = await axios.post(url, data)
-        if(resp.data != "Usuário cadastrado com sucesso!") {
-            alert(resp.data)
-            return
-        } else {
+        try {
+            const resp = await axios.post(url, data)
             navigate('/')
-            alert(resp.data)
+            alert(resp.data.success)
+            
+        }catch(err) {
+            if(err.response.status === 400) {
+                alert(err.response.data.error)
+            }
         }
         
     }
