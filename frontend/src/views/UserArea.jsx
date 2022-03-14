@@ -15,9 +15,12 @@ export const UserArea = () => {
         const headers = {
             'authorization': token
         }
-        const res = await axios.get(url, {headers})
-        if(res.data.auth) {
-            console.log('teste')
+        try {
+            const res = await axios.get(url, {headers})
+        }catch(err) {
+            if(err.response.status === 401) {
+                navigate('/')
+            }
         }
     }, [])
 

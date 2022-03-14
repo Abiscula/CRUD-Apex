@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express'
-import { ReqUserType } from "../customTypes"
+import { ReqUserType } from "../@types/customTypes"
 import jwt from 'jsonwebtoken'
 
 export const auth = {
@@ -11,7 +11,7 @@ function verifyJWT(req: ReqUserType, res: Response, next: NextFunction): void {
     if(token) {
         jwt.verify(token, auth.secret, (err: any, decoded: any) => {
             if(err) {
-                return res.status(401).end();
+                res.status(401).send();
             }
                 
             req.user = decoded.user;
