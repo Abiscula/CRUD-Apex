@@ -1,7 +1,23 @@
 import { Container } from "../assets/styles/styled-UserArea"
 import  img  from '../assets/img/caustic-mini.png'
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import axios from "axios";
 
 export const UserArea = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(async () => {
+        const url = 'http://localhost:3001/user'
+        const headers = {
+            'x-access-token': ''
+        }
+        const res = await axios.get(url)
+        console.log(res)
+    }, [])
+
+
     return (
         <div>
             <Container>

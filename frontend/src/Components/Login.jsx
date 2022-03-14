@@ -18,12 +18,13 @@ export const Login = () => {
             'passw': password
         }
         const res = await axios.post(url, data)
-        if(res.data !== "Logado com sucesso!") {
-            alert(res.data)
-            return
-        } else {
-            alert(res.data)
+        if(res.data.auth === true) {
+            console.log(res.data.token)
+            alert("Login realizado com sucesso")
             setLogged(true)
+        }
+        if(res.data.auth === false)  {
+            alert('Login ou senha inválidos, tente novamente!')
         }
     }
     
