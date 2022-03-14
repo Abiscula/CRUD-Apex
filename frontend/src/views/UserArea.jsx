@@ -10,11 +10,15 @@ export const UserArea = () => {
 
     useEffect(async () => {
         const url = 'http://localhost:3001/user'
+        const token = localStorage.getItem("token")
+        console.log(token)
         const headers = {
-            'x-access-token': ''
+            'authorization': token
         }
-        const res = await axios.get(url)
-        console.log(res)
+        const res = await axios.get(url, {headers})
+        if(res.data.auth) {
+            console.log('teste')
+        }
     }, [])
 
 

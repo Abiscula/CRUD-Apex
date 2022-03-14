@@ -19,7 +19,7 @@ export const Login = () => {
         }
         const res = await axios.post(url, data)
         if(res.data.auth === true) {
-            console.log(res.data.token)
+            localStorage.setItem("token", res.data.token);
             alert("Login realizado com sucesso")
             setLogged(true)
         }

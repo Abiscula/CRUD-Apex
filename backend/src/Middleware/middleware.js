@@ -3,7 +3,7 @@ const SECRET = process.env['TOKEN_SECRET']
 
 
 function verifyJWT(req, res, next) {
-    const token = req.headers['x-access-token'];
+    const token = req.headers['authorization'];
     jwt.verify(token, SECRET, (err, decoded) => {
         if(err) {
             return res.status(401).end();

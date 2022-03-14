@@ -10,7 +10,7 @@ class userController {
     constructor() {
         router.post('/login', this.login)
         router.post('/register', this.register)
-        router.post('/user', verifyJWT, this.user)
+        router.get('/user', verifyJWT, this.user)
         
     }
 
@@ -50,7 +50,7 @@ class userController {
     }
 
     user(req, res) {
-        res.send('Usuário possui permissão de acesso')
+        res.json({auth: true})
     }
 }
 
