@@ -1,4 +1,5 @@
 require('dotenv').config()
+import { Request, Response } from 'express'
 const express = require('express');
 const router = express.Router();
 const db = require('../Model/db')
@@ -14,23 +15,23 @@ class userController {
         
     }
 
-    login(req, res) {
+    login(req: Request, res: Response) {
         const { user, passw } = req.body 
         db.where({user: user})
             .where({passw: passw})
-            .table("users").then(data => {
+            .table("users").then((data: any) => {
                 if(data.length > 0) {
                     const token = jwt.sign({user: data[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
                     return res.json({auth: true, token});
                 } else {
                     return res.json({auth: false})
                 }
-            }).catch(err => {
+            }).catch((err: Error) => {
                 console.log(err)
             })
     }
 
-    register(req, res) {
+    register(req: Request, res: Response) {
         const { name, email, user, passw, nick } = req.body
         let values = {
             name: name,
@@ -40,16 +41,16 @@ class userController {
             nick: nick
         }
 
-        db.insert(values).into("users").then(data => {
+        db.insert(values).into("users").then((data: any) => {
             res.send("Usuário cadastrado com sucesso!")
-        }).catch(err => {
+        }).catch((err: any) => {
             if(err.code == "ER_DUP_ENTRY") {
                 res.send('ERRO: Usuário já cadastrado')
             }
         })
     }
 
-    user(req, res) {
+    user(req: Request, res: Response) {
         res.json({auth: true})
     }
 }
