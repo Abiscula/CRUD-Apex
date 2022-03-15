@@ -62,7 +62,18 @@ class userController {
     }
 
     changeUserInfos(req: Request, res: Response) {
-
+        const { name, email, user, passw, nick } = req.body['user_info']
+        const values = {
+            name: name,
+            email: email,
+            passw: passw,
+            nick: nick 
+        }
+        db.update(values).into("users").where({user: user}).then((data: any) => {
+            console.log(data)
+        }).catch((err: any) => {
+            console.log(err)
+        })
     }
 }
 

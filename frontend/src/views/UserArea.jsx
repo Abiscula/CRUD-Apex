@@ -7,6 +7,7 @@ import axios from "axios";
 export const UserArea = () => {
 
     const navigate = useNavigate();
+    const token = localStorage.getItem("token")
     const [userInfo, setUserInfo] = useState({
         name: '',
         email: '',
@@ -18,8 +19,6 @@ export const UserArea = () => {
 
     useEffect(async () => {
         const url = 'http://localhost:3001/user'
-        const token = localStorage.getItem("token")
-        console.log(token)
         const headers = {
             'authorization': token
         }
@@ -30,9 +29,9 @@ export const UserArea = () => {
                     ...userInfo,
                     name: res.data.user_infos[0].name,
                     email: res.data.user_infos[0].email,
+                    user: res.data.user_infos[0].user,
                     passw: res.data.user_infos[0].passw,
                     passw2: res.data.user_infos[0].passw,
-                    user: res.data.user_infos[0].user,
                     nick: res.data.user_infos[0].nick
                 })
             }
@@ -44,8 +43,15 @@ export const UserArea = () => {
     }, [])
 
 
-    function changeUserInfos() {
+    async function changeUserInfos(event) {
+        event.preventDefault()
+        const url = 'http://localhost:3001/edit'
+        const headers = { 'authorization': token }
+        const data = { user_info: userInfo }
+        console.log(data)
+        const res = await axios.put(url, data, {headers})
 
+        console.log(res)
     }
 
     return (
@@ -71,8 +77,8 @@ export const UserArea = () => {
                     <div>
                         <label>Usuário</label>
                         <input type="text" minLength={4}
-                            defaultValue={userInfo.user}
-                            onChange={(e) => setUserInfo({...userInfo, user: e.target.value})} 
+                            value={userInfo.user}
+                            disabled
                         />
                     </div>
 
@@ -101,7 +107,7 @@ export const UserArea = () => {
                     </div>
                     
                     <span>
-                        <button onClick={changeUserInfos()}>Alterar dados</button>
+                        <button onClick={changeUserInfos}>Alterar dados</button>
                         <img src={img}></img>
                     </span>
                     
