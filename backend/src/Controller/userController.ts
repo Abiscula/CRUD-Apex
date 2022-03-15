@@ -13,7 +13,7 @@ class userController {
         router.post('/login', this.login)
         router.post('/register', this.register)
         router.get('/user', verifyJWT, this.user)
-        
+        router.put('/edit', verifyJWT, this.changeUserInfos)
     }
 
     login(req: Request, res: Response) {
@@ -59,6 +59,10 @@ class userController {
                 return res.json({auth: true, user_infos: data})
             })
         }
+    }
+
+    changeUserInfos(req: Request, res: Response) {
+
     }
 }
 

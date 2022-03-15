@@ -44,6 +44,10 @@ export const UserArea = () => {
     }, [])
 
 
+    function changeUserInfos() {
+
+    }
+
     return (
         <div>
             <Container>
@@ -51,47 +55,53 @@ export const UserArea = () => {
                     <div>
                         <label>Nome</label>
                         <input type="text" minLength={4}
-                            defaultValue={userInfo.name}    
+                            defaultValue={userInfo.name}
+                            onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}   
                         />
                     </div>
 
                     <div>
                         <label>E-mail</label>
                         <input type="email" minLength={4}
-                            defaultValue={userInfo.email} 
+                            defaultValue={userInfo.email}
+                            onChange={(e) => setUserInfo({...userInfo, email: e.target.value})} 
                         />
                     </div>
 
                     <div>
                         <label>Usuário</label>
                         <input type="text" minLength={4}
-                            defaultValue={userInfo.user} 
+                            defaultValue={userInfo.user}
+                            onChange={(e) => setUserInfo({...userInfo, user: e.target.value})} 
                         />
                     </div>
 
                     <div>
                         <label>Senha</label>
                         <input type="password" minLength={8}
-                            defaultValue={userInfo.passw} 
+                            defaultValue={userInfo.passw}
+                            onChange={(e) => setUserInfo({...userInfo, passw: e.target.value})} 
                         />
                     </div>
 
                     <div>
                         <label>Repita a senha</label>
                         <input type="password" minLength={8}
-                            defaultValue={userInfo.passw2} 
+                            defaultValue={userInfo.passw2}
+                            onChange={(e) => setUserInfo({...userInfo, passw2: e.target.value})} 
                         />
                     </div>
 
                     <div>
                         <label>Nick (Apex)</label>
                         <input type="text" minLength={4}
-                            defaultValue={userInfo.nick} 
+                            defaultValue={userInfo.nick}
+                            onChange={(e) => setUserInfo({...userInfo, nick: e.target.value})} 
                         />
                     </div>
                     
                     <span>
-                        <button>Alterar dados</button>
+                        <button onClick={changeUserInfos()}>Alterar dados</button>
                         <img src={img}></img>
                     </span>
                     
