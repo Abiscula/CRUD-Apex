@@ -43,10 +43,10 @@ class userController {
         }
 
         db.insert(values).into("users").then((data: any) => {
-            res.status(200).send({'success': 'Usuário cadastrado com sucesso!'});
+            res.send("Usuário cadastrado com sucesso!")
         }).catch((err: any) => {
             if(err.code == "ER_DUP_ENTRY") {
-                res.status(400).send({'error': 'ERRO: Usuário já cadastrado!'});
+                res.send('ERRO: Usuário já cadastrado')
             }
         })
     }
