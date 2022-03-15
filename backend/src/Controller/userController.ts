@@ -1,5 +1,6 @@
 require('dotenv').config()
 import { Request, Response } from 'express'
+import jwt_decode from 'jwt-decode'
 const express = require('express');
 const router = express.Router();
 const db = require('../Model/db')
@@ -51,7 +52,13 @@ class userController {
     }
 
     user(req: Request, res: Response) {
-        res.json({auth: true})
+        const token = req.headers['authorization'];
+        if(token) {
+            let { user }: any = jwt_decode(token)
+            db.select().where({user: user}).table("users").then((data: any) => {
+                return res.json({auth: true, user_infos: data})
+            })
+        }
     }
 }
 
