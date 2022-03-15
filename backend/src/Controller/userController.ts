@@ -14,6 +14,7 @@ class userController {
         router.post('/register', this.register)
         router.get('/user', verifyJWT, this.user)
         router.put('/edit', verifyJWT, this.changeUserInfos)
+        router.delete('/delete', verifyJWT, this.deleteUser)
     }
 
     login(req: Request, res: Response) {
@@ -74,6 +75,18 @@ class userController {
         }).catch((err: any) => {
             console.log(err)
         })
+    }
+
+    deleteUser(req: Request, res: Response) {
+        const token = req.headers['authorization'];
+        if(token) {
+            let { user }: any = jwt_decode(token)
+            db.delete().where({user: user}).table("users")
+                .then((data: any) => {
+                    console.log(data)
+                    res.send('Usuario deletado com sucesso')
+                })
+        }
     }
 }
 

@@ -63,6 +63,25 @@ export const UserArea = () => {
 
     }
 
+
+    async function deleteUserAccount(event) {
+        event.preventDefault()
+        const url = 'http://localhost:3001/delete'
+        const headers = { 'authorization': token }
+    
+        try {
+            const res = await axios.delete(url, {headers})
+            alert(res.data)
+            navigate('/')
+
+        }catch(err) {
+            if(err.response.status === 401) {
+                navigate('/')
+            }
+        }
+
+    }
+
     return (
         <div>
             <Container>
@@ -118,6 +137,10 @@ export const UserArea = () => {
                     <span>
                         <button onClick={changeUserInfos}>Alterar dados</button>
                         <img src={img}></img>
+                    </span>
+
+                    <span>
+                        <button onClick={deleteUserAccount}>Excluir conta</button>
                     </span>
                     
                 </form>

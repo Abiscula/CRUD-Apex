@@ -15,7 +15,7 @@ export const Container = styled.section`
         background-color: #493131a9;
         border-radius: 14px;
         width: 700px;
-        height: 780px;
+        height: 850px;
 
         div {
             display: flex;
@@ -55,6 +55,13 @@ export const Container = styled.section`
                 color: #312c2b;
                 background: #c49231;
                 cursor: pointer;
+            }
+
+            button:last-child{
+                background-image: url(${img});
+                width: 18%;
+                font-size: 1.03rem;
+                color: #fefefe;
             }
 
             button:hover {
