@@ -1,12 +1,15 @@
 require('dotenv').config()
 import { Request, Response } from 'express'
 import jwt_decode from 'jwt-decode'
+const bcrypt = require('bcrypt')
 const express = require('express');
-const router = express.Router();
-const db = require('../Model/db')
 const jwt = require('jsonwebtoken'); //cria da autenticação de login
 const verifyJWT = require('../Middleware/middleware');
+const db = require('../Model/db')
 const SECRET = process.env['TOKEN_SECRET']
+
+const router = express.Router();
+const salt = bcrypt.genSaltSync(10)
 
 class userController {
     constructor() {
@@ -20,11 +23,16 @@ class userController {
     login(req: Request, res: Response) {
         const { user, passw } = req.body 
         db.where({user: user})
-            .where({passw: passw})
             .table("users").then((data: any) => {
                 if(data.length > 0) {
-                    const token = jwt.sign({user: data[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
-                    return res.json({auth: true, token});
+                    console.log(data[0]['passw'])
+                    bcrypt.compare(passw, data[0]['passw'], (err: Error, response: any) => {
+                        console.log(res)
+                        if(response) {
+                            const token = jwt.sign({user: data[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
+                            return res.json({auth: true, token});
+                        }
+                    }) 
                 } else {
                     return res.json({auth: false})
                 }
@@ -35,11 +43,12 @@ class userController {
 
     register(req: Request, res: Response) {
         const { name, email, user, passw, nick } = req.body
+        const cryptoPassw = bcrypt.hashSync(passw, salt)
         let values = {
             name: name,
             email: email,
             user: user,
-            passw: passw,
+            passw: cryptoPassw,
             nick: nick
         }
 
