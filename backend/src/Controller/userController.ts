@@ -26,9 +26,9 @@ class userController {
             .table("users").then((data: any) => {
                 if(data.length > 0) {
                     console.log(data[0]['passw'])
-                    bcrypt.compare(passw, data[0]['passw'], (err: Error, response: any) => {
+                    bcrypt.compare(passw, data[0]['passw'], (err: Error, match: Boolean) => {
                         console.log(res)
-                        if(response) {
+                        if(match) {
                             const token = jwt.sign({user: data[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
                             return res.json({auth: true, token});
                         }
