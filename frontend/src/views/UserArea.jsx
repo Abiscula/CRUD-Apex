@@ -3,11 +3,13 @@ import  img  from '../assets/img/caustic-mini.png'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useCustomStates } from "../Provider/States";
 
 export const UserArea = () => {
 
     const navigate = useNavigate();
     const token = localStorage.getItem("token")
+    const { setLogged } = useCustomStates()
     const [userInfo, setUserInfo] = useState({
         name: '',
         email: '',
@@ -71,6 +73,7 @@ export const UserArea = () => {
     
         try {
             const res = await axios.delete(url, {headers})
+            setLogged(false)
             alert(res.data)
             navigate('/')
 
