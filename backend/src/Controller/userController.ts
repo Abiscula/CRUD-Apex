@@ -70,7 +70,7 @@ class userController {
             nick: nick 
         }
         db.update(values).into("users").where({user: user}).then((data: any) => {
-            console.log(data)
+            res.send('Dados alterados com sucesso!')
         }).catch((err: any) => {
             console.log(err)
         })

@@ -48,10 +48,19 @@ export const UserArea = () => {
         const url = 'http://localhost:3001/edit'
         const headers = { 'authorization': token }
         const data = { user_info: userInfo }
-        console.log(data)
-        const res = await axios.put(url, data, {headers})
+        if(userInfo.passw !== userInfo.passw2) {
+            alert('As senhas devem ser iguais')
+            return
+        }
+        try {
+            const res = await axios.put(url, data, {headers})
+            alert(res.data)
+        }catch(err) {
+            if(err.response.status === 401) {
+                navigate('/')
+            }
+        }
 
-        console.log(res)
     }
 
     return (
