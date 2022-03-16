@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const express = require('express');
 const jwt = require('jsonwebtoken'); //cria da autenticação de login
 const verifyJWT = require('../Middleware/middleware');
-const db = require('../Model/db')
+const db = require('../Model/index.ts')
 const SECRET = process.env['TOKEN_SECRET']
 
 const router = express.Router();
