@@ -31,6 +31,7 @@ export const Header = () => {
                 <nav>
                     <span onClick={() => navigate('/')}>Home</span>
                     {!logged ? <span onClick={() => navigate('/register')}>Cadastro</span> : ''}
+                    {logged ? <span onClick={() => navigate('/dashboard')}>Dashboard</span> : ''}
                 </nav>
                 {!logged
                 

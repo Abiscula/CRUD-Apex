@@ -16,6 +16,7 @@ class userController {
         router.post('/login', this.login)
         router.post('/register', this.register)
         router.get('/user', verifyJWT, this.user)
+        router.get('/dashboard', verifyJWT, this.dashboard)
         router.put('/edit', verifyJWT, this.changeUserInfos)
         router.delete('/delete', verifyJWT, this.deleteUser)
     }
@@ -62,10 +63,21 @@ class userController {
     }
 
     user(req: Request, res: Response) {
-        const token = req.headers['authorization'];
+        const token = req.headers['authorization']
         if(token) {
             let { user }: any = jwt_decode(token)
             db.select().where({user: user}).table("users").then((data: any) => {
+                return res.json({auth: true, user_infos: data})
+            })
+        }
+    }
+
+
+    dashboard(req: Request, res: Response) {
+        const token = req.headers['authorization']
+        if(token) {
+            let { user }: any = jwt_decode(token)
+            db.select('nick').where({user: user}).table("users").then((data: any) => {
                 return res.json({auth: true, user_infos: data})
             })
         }
@@ -97,6 +109,7 @@ class userController {
                 })
         }
     }
+
 }
 
 new userController()

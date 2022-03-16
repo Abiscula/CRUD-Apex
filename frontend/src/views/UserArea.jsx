@@ -9,7 +9,7 @@ export const UserArea = () => {
 
     const navigate = useNavigate();
     const token = localStorage.getItem("token")
-    const { setLogged } = useCustomStates()
+    const { logged, setLogged } = useCustomStates()
     const [userInfo, setUserInfo] = useState({
         name: '',
         email: '',
@@ -18,6 +18,12 @@ export const UserArea = () => {
         passw2: '',
         nick: ''
     })
+
+    useEffect(() => {
+        if(!logged) {
+            navigate('/')
+        }
+    }, [])
 
     useEffect(async () => {
         const url = 'http://localhost:3001/user'
