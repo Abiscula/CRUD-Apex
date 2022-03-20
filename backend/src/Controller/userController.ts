@@ -24,13 +24,11 @@ class userController {
     login(req: Request, res: Response) {
         const { user, passw } = req.body 
         db.where({user: user})
-            .table("users").then((data: any) => {
-                if(data.length > 0) {
-                    console.log(data[0]['passw'])
-                    bcrypt.compare(passw, data[0]['passw'], (err: Error, match: Boolean) => {
-                        console.log(res)
+            .table("users").then((data: object) => {
+                if(Object.keys(data).length > 0) {
+                    bcrypt.compare(passw, Object.values(data)[0]['passw'], (err: Error, match: Boolean) => { //comparando senha
                         if(match) {
-                            const token = jwt.sign({user: data[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
+                            const token = jwt.sign({user: Object.values(data)[0]['user']}, SECRET, { expiresIn: 300 }) //300s (5min)
                             return res.json({auth: true, token});
                         }
                     }) 
@@ -53,10 +51,10 @@ class userController {
             nick: nick
         }
 
-        db.insert(values).into("users").then((data: any) => {
+        db.insert(values).into("users").then((data: Array<number>) => {
             res.send("Usuário cadastrado com sucesso!")
-        }).catch((err: any) => {
-            if(err.code == "ER_DUP_ENTRY") {
+        }).catch((err: object) => {
+            if(Object.values(err).includes("ER_DUP_ENTRY")) {
                 res.send('ERRO: Usuário já cadastrado')
             }
         })
