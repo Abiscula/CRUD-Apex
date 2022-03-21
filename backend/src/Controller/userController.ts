@@ -1,6 +1,7 @@
 require('dotenv').config()
 import { Request, Response } from 'express'
 import jwt_decode from 'jwt-decode'
+import { tokenUser } from '../@types/customTypes';
 const bcrypt = require('bcrypt')
 const express = require('express');
 const jwt = require('jsonwebtoken'); //cria da autenticação de login
@@ -10,6 +11,8 @@ const SECRET = process.env['TOKEN_SECRET']
 
 const router = express.Router();
 const salt = bcrypt.genSaltSync(10)
+
+
 
 class userController {
     constructor() {
@@ -63,8 +66,8 @@ class userController {
     user(req: Request, res: Response) {
         const token = req.headers['authorization']
         if(token) {
-            let { user }: any = jwt_decode(token)
-            db.select().where({user: user}).table("users").then((data: any) => {
+            let { user }: tokenUser = jwt_decode(token)
+            db.select().where({user: user}).table("users").then((data: object) => {
                 return res.json({auth: true, user_infos: data})
             })
         }
@@ -74,8 +77,8 @@ class userController {
     dashboard(req: Request, res: Response) {
         const token = req.headers['authorization']
         if(token) {
-            let { user }: any = jwt_decode(token)
-            db.select('nick').where({user: user}).table("users").then((data: any) => {
+            let { user }: tokenUser = jwt_decode(token)
+            db.select('nick').where({user: user}).table("users").then((data: object) => {
                 return res.json({auth: true, user_infos: data})
             })
         }
@@ -89,9 +92,9 @@ class userController {
             passw: passw,
             nick: nick 
         }
-        db.update(values).into("users").where({user: user}).then((data: any) => {
+        db.update(values).into("users").where({user: user}).then((data: number) => {
             res.send('Dados alterados com sucesso!')
-        }).catch((err: any) => {
+        }).catch((err: Error) => {
             console.log(err)
         })
     }
@@ -99,10 +102,9 @@ class userController {
     deleteUser(req: Request, res: Response) {
         const token = req.headers['authorization'];
         if(token) {
-            let { user }: any = jwt_decode(token)
+            let { user }: tokenUser = jwt_decode(token)
             db.delete().where({user: user}).table("users")
-                .then((data: any) => {
-                    console.log(data)
+                .then((data: number) => {
                     res.send('Usuario deletado com sucesso')
                 })
         }
